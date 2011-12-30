@@ -35,6 +35,10 @@ public class MendelSheepPlayerListener extends PlayerListener{
         if( evnt.getPlayer().getItemInHand().getType()==Material.WHEAT && evnt.getPlayer().hasPermission("mendelsheep.grow") ){
             cshp.setAge(0);
         }
+
+        if( evnt.getPlayer().getItemInHand().getType()==Material.WATCH && evnt.getPlayer().hasPermission("mendelsheep.regrow") ){
+            cshp.setSheared(false);
+        }
     }
     
 }

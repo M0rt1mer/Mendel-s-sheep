@@ -6,10 +6,6 @@ package mort.mendelsheep;
 import net.minecraft.server.EntitySheep;
 import net.minecraft.server.EntityAnimal;
 import net.minecraft.server.World;
-import org.bukkit.entity.Sheep;
-import org.bukkit.craftbukkit.CraftWorld;
-import org.bukkit.craftbukkit.entity.CraftSheep;
-import org.bukkit.Location;
 import net.minecraft.server.NBTTagCompound;
 /**
  *
@@ -32,7 +28,7 @@ public class EntityMendelSheep extends EntitySheep {
     public void b(NBTTagCompound nbttagcompound)
     {
         super.b(nbttagcompound);
-        nbttagcompound.a("Genome", gene.genes );
+        nbttagcompound.setByte("Genome", gene.genes );
     }
 
     /* READ */
@@ -40,7 +36,7 @@ public class EntityMendelSheep extends EntitySheep {
     {
         super.a(nbttagcompound);
         if( nbttagcompound.hasKey("Genome") )
-            gene = new MendelGenome( nbttagcompound.d("Genome") );
+            gene = new MendelGenome( nbttagcompound.getByte("Genome") );
     }
     
     public void genColor(){
@@ -50,6 +46,14 @@ public class EntityMendelSheep extends EntitySheep {
     @Override
     protected EntityAnimal createChild(EntityAnimal entityanimal) {
         return new EntityMendelSheep( this.world, new MendelGenome( this.gene, ((EntityMendelSheep)entityanimal).gene )  );
+    }
+    
+    @Override
+    public void setSheared(boolean flag) {
+        boolean prev = isSheared();
+        super.setSheared(flag);
+        if(!flag && prev )
+            genColor();
     }
     
 }
