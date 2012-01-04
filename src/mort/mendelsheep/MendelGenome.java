@@ -26,8 +26,8 @@ public class MendelGenome {
     public MendelGenome( MendelGenome mother, MendelGenome father ){
         genes = 0;
         for(int i = 0; i<4;i++){
-            genes |= ( mother.genes & (1<<(i*2+rand.nextInt(2)) ) );
-            genes |= ( (father.genes & (1<<(i*2+rand.nextInt(2)) ) )<< 1 );
+            genes |= (( mother.genes & (1<<(i*2+rand.nextInt(2)) ) )>0)?(1<<(i*2) ):0;
+            genes |= (( (father.genes & (1<<(i*2+rand.nextInt(2)) ) )<< 1 )>0)?(1<<(i*2+1)):0;
         }
     }
     
