@@ -56,7 +56,7 @@ public class MendelGenome {
     
     public static int[] colorMap = {
         DyeColor.BLUE.getData(), DyeColor.BROWN.getData(), DyeColor.GREEN.getData(), DyeColor.BLACK.getData(),
-        DyeColor.MAGENTA.getData(), DyeColor.MAGENTA.getData(), DyeColor.ORANGE.getData(), DyeColor.SILVER.getData(),
+        DyeColor.PURPLE.getData(), DyeColor.MAGENTA.getData(), DyeColor.ORANGE.getData(), DyeColor.SILVER.getData(),
         DyeColor.LIGHT_BLUE.getData(), DyeColor.RED.getData(), DyeColor.LIME.getData(), DyeColor.GRAY.getData(),
         DyeColor.CYAN.getData(), DyeColor.PINK.getData(), DyeColor.YELLOW.getData(), DyeColor.WHITE.getData() };
     

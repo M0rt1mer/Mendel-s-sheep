@@ -24,6 +24,10 @@ public class EntityMendelSheep extends EntitySheep {
         gene = gnm;
         genColor();
     }
+    public EntityMendelSheep(EntitySheep shp) {
+        this( shp.world, new MendelGenome() );
+        this.setPositionRotation(shp.locX, shp.locY, shp.locZ, shp.pitch, shp.yaw);
+    }
     /* WRITE */
     public void b(NBTTagCompound nbttagcompound)
     {

@@ -34,6 +34,11 @@ public class MendelSheep extends JavaPlugin {
             mtd.invoke(null, args2);
         }catch (Exception e){e.printStackTrace();}
         
+        try{
+            getServer().getPluginManager().registerEvent(Type.CREATURE_SPAWN,
+                new MendelSheepEntityListener(), Priority.Low, this);
+        }catch(Exception e){System.out.println("Entity hack failed - spawning won't work.");e.printStackTrace();}
+        
         Permission pms = new Permission( "mendelsheep" );
         getServer().getPluginManager().addPermission( pms );
         pms.setDefault( PermissionDefault.OP );
@@ -43,7 +48,7 @@ public class MendelSheep extends JavaPlugin {
             perm.addParent(pms, true);
             getServer().getPluginManager().addPermission( perm );
         }
-
+        
     }
     
     @Override
