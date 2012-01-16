@@ -44,7 +44,7 @@ public class MendelSheep extends JavaPlugin {
         pms.setDefault( PermissionDefault.OP );
         for( String str: new String[] { "inspect", "grow", "spawn", "restore", "regrow" } ){
             Permission perm = new Permission( "mendelsheep."+str );
-            perm.setDefault( PermissionDefault.TRUE );
+            perm.setDefault( PermissionDefault.FALSE );
             perm.addParent(pms, true);
             getServer().getPluginManager().addPermission( perm );
         }

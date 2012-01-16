@@ -1,5 +1,5 @@
 name: Mendels Sheeps
-version: 0.2
+version: 0.3.2
 author: Mort
 main: mort.mendelsheep.MendelSheep
 load: startup
