@@ -1,5 +1,5 @@
 name: Mendels Sheeps
-version: 0.3.2
+version: 0.4
 author: Mort
 main: mort.mendelsheep.MendelSheep
 load: startup
@@ -7,3 +7,4 @@ commands:
     mendelsheep:
         usage: /<command>
         aliases: [ ms ]
+        permissions: mendelsheep.spawn

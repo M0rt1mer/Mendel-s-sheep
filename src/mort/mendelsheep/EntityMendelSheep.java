@@ -4,6 +4,7 @@
  */
 package mort.mendelsheep;
 import net.minecraft.server.EntitySheep;
+import net.minecraft.server.EntityPlayer;
 import net.minecraft.server.EntityAnimal;
 import net.minecraft.server.World;
 import net.minecraft.server.NBTTagCompound;
@@ -48,7 +49,7 @@ public class EntityMendelSheep extends EntitySheep {
     }
     
     @Override
-    protected EntityAnimal createChild(EntityAnimal entityanimal) {
+    public EntityAnimal createChild(EntityAnimal entityanimal) {
         return new EntityMendelSheep( this.world, new MendelGenome( this.gene, ((EntityMendelSheep)entityanimal).gene )  );
     }
     

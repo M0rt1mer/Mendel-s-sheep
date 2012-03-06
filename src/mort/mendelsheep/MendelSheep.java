@@ -3,13 +3,11 @@
  * and open the template in the editor.
  */
 package mort.mendelsheep;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import net.minecraft.server.EntityTypes;
-import org.bukkit.entity.CreatureType;
+import org.bukkit.entity.EntityType;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 /**
@@ -20,10 +18,6 @@ public class MendelSheep extends JavaPlugin {
     
     @Override
     public void onEnable(){
-        
-        getServer().getPluginManager().registerEvent(Type.PLAYER_INTERACT_ENTITY,
-                new MendelSheepPlayerListener(), Priority.Low, this);
-        
         getCommand("ms").setExecutor(this);
         
         try{
@@ -35,16 +29,14 @@ public class MendelSheep extends JavaPlugin {
         }catch (Exception e){e.printStackTrace();}
         
         try{
-            getServer().getPluginManager().registerEvent(Type.CREATURE_SPAWN,
-                new MendelSheepEntityListener(), Priority.Low, this);
+            getServer().getPluginManager().registerEvents( new MendelSheepListener(), this);
         }catch(Exception e){System.out.println("Entity hack failed - spawning won't work.");e.printStackTrace();}
         
         Permission pms = new Permission( "mendelsheep" );
         getServer().getPluginManager().addPermission( pms );
         pms.setDefault( PermissionDefault.OP );
-        for( String str: new String[] { "inspect", "grow", "spawn", "restore", "regrow" } ){
+        for( String str: new String[] { "inspect", "grow", "spawn", "restore", "regrow", "pickup" } ){
             Permission perm = new Permission( "mendelsheep."+str );
-            perm.setDefault( PermissionDefault.FALSE );
             perm.addParent(pms, true);
             getServer().getPluginManager().addPermission( perm );
         }
@@ -62,7 +54,7 @@ public class MendelSheep extends JavaPlugin {
         
         if(cs instanceof org.bukkit.entity.Player && cs.hasPermission("mendelsheep.spawn")){
             org.bukkit.entity.Player plr = (org.bukkit.entity.Player) cs;
-            plr.getWorld().spawnCreature(plr.getLocation(), CreatureType.SHEEP);
+            plr.getWorld().spawnCreature(plr.getLocation(), EntityType.SHEEP);
         }
         
         return true;
